@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Trade Acceleration Project - Djibouti Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .question {
+            cursor: pointer;
+            background-color: #f1f1f1;
+            padding: 10px;
+            margin-bottom: 5px;
+        }
+        .question:hover {
+            background-color: #e1e1e1;
+        }
+        .answer {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Djibouti - Business Survey Results</h1>
+    <p><a href="index.html">Back to country selection</a></p>
+    <div id="questions"></div>
+
+    <script>
+        const questions = [
+            {{q_id: "q1bx1", q_text: "Do you also sell goods/services online?", file_path: "results/Djibouti/q1bx1_Do_you_also_sell_goodsservices_online.jpg"}},
+            {{q_id: "q1c", q_text: "Please choose the number of employees in your company:", file_path: "results/Djibouti/q1c_Please_choose_the_number_of_employees_in_your_company.jpg"}},
+            {{q_id: "q1e", q_text: "Are you a subsidiary of a foreign company?", file_path: "results/Djibouti/q1e_Are_you_a_subsidiary_of_a_foreign_company.jpg"}},
+            {{q_id: "q1f", q_text: "Do you have a subsidiary abroad?", file_path: "results/Djibouti/q1f_Do_you_have_a_subsidiary_abroad.jpg"}},
+            {{q_id: "q2x1", q_text: "How much of your international revenue stems from each region, and which regions are most important for the growth of your business through international trade?", file_path: "results/Djibouti/q2x1_How_much_of_your_international_revenue_stems_from_each_region_and_which_regions_are_most_important_f.jpg"}},
+            {{q_id: "q2x2", q_text: "How much of your international revenue stems from each region, and which regions are most important for the growth of your business through international trade (Please provide the percentage of all international revenue and indicate the importance of each region)", file_path: "results/Djibouti/q2x2_How_much_of_your_international_revenue_stems_from_each_region_and_which_regions_are_most_important_f.jpg"}},
+            {{q_id: "q4", q_text: "How important is international trade for the growth of your business in the next 5 years?", file_path: "results/Djibouti/q4_How_important_is_international_trade_for_the_growth_of_your_business_in_the_next_5_years.jpg"}},
+            {{q_id: "q5", q_text: "Please characterize how your business generates revenue online, and through which methods do you generate this revenue?", file_path: "results/Djibouti/q5_Please_characterize_how_your_business_generates_revenue_online_and_through_which_methods_do_you_gene.jpg"}},
+            {{q_id: "q6", q_text: "What obstacles does your online business face in accessing the internet?", file_path: "results/Djibouti/q6_What_obstacles_does_your_online_business_face_in_accessing_the_internet.jpg"}},
+            {{q_id: "q7", q_text: "How important are Artificial Intelligence (AI) systems for your business operations?", file_path: "results/Djibouti/q7_How_important_are_Artificial_Intelligence_AI_systems_for_your_business_operations.jpg"}},
+            {{q_id: "q9", q_text: "How easy is it for your business to conclude sales with international customers online?", file_path: "results/Djibouti/q9_How_easy_is_it_for_your_business_to_conclude_sales_with_international_customers_online.jpg"}},
+            {{q_id: "q10", q_text: "How much do the following regulatory requirements burden your online sales to international customers?", file_path: "results/Djibouti/q10_How_much_do_the_following_regulatory_requirements_burden_your_online_sales_to_international_customer.jpg"}},
+            {{q_id: "q11", q_text: "How much of a burden are the following customer concerns for your international sales online?", file_path: "results/Djibouti/q11_How_much_of_a_burden_are_the_following_customer_concerns_for_your_international_sales_online.jpg"}},
+            {{q_id: "q12", q_text: "Does your business have a formal privacy policy for customer data? If yes, which data privacy law does your privacy comply with?", file_path: "results/Djibouti/q12_Does_your_business_have_a_formal_privacy_policy_for_customer_data_If_yes_which_data_privacy_law_does.jpg"}},
+            {{q_id: "q13c1", q_text: "Domestic - What obstacles related to data privacy rules does your business face with sales online?", file_path: "results/Djibouti/q13c1_Domestic__What_obstacles_related_to_data_privacy_rules_does_your_business_face_with_sales_online.jpg"}},
+            {{q_id: "q13c2", q_text: "International - What obstacles related to data privacy rules does your business face with sales online?", file_path: "results/Djibouti/q13c2_International__What_obstacles_related_to_data_privacy_rules_does_your_business_face_with_sales_onlin.jpg"}},
+            {{q_id: "q14", q_text: "How do you assess the current cybersecurity threats to your online business?", file_path: "results/Djibouti/q14_How_do_you_assess_the_current_cybersecurity_threats_to_your_online_business.jpg"}},
+            {{q_id: "q15c1", q_text: "Domestic - What obstacles related to cybersecurity rules does your business face with sales online?", file_path: "results/Djibouti/q15c1_Domestic__What_obstacles_related_to_cybersecurity_rules_does_your_business_face_with_sales_online.jpg"}},
+            {{q_id: "q15c2", q_text: "International - What obstacles related to cybersecurity rules does your business face with sales online?", file_path: "results/Djibouti/q15c2_International__What_obstacles_related_to_cybersecurity_rules_does_your_business_face_with_sales_onli.jpg"}},
+            {{q_id: "q16", q_text: "Has your business recently encountered international data transfer restrictions? If yes, what kind of restriction did your business encounter?", file_path: "results/Djibouti/q16_Has_your_business_recently_encountered_international_data_transfer_restrictions_If_yes_what_kind_of_.jpg"}},
+            {{q_id: "q17c1", q_text: "Familiar with - What mechanisms for international data transfers are you familiar with and which does your company use?", file_path: "results/Djibouti/q17c1_Familiar_with__What_mechanisms_for_international_data_transfers_are_you_familiar_with_and_which_does.jpg"}},
+            {{q_id: "q17c2", q_text: "Used by Company - What mechanisms for international data transfers are you familiar with and which does your company use?", file_path: "results/Djibouti/q17c2_Used_by_Company__What_mechanisms_for_international_data_transfers_are_you_familiar_with_and_which_do.jpg"}},
+            {{q_id: "q18", q_text: "How much do the following trade-related procedures burden the international trade of your business?", file_path: "results/Djibouti/q18_How_much_do_the_following_traderelated_procedures_burden_the_international_trade_of_your_business.jpg"}},
+            {{q_id: "q19c1", q_text: "Domestic - Which trade facilitation mechanisms would make a significant difference for the ease of your international trade?", file_path: "results/Djibouti/q19c1_Domestic__Which_trade_facilitation_mechanisms_would_make_a_significant_difference_for_the_ease_of_yo.jpg"}},
+            {{q_id: "q19c2", q_text: "Abroad - Which trade facilitation mechanisms would make a significant difference for the ease of your international trade?", file_path: "results/Djibouti/q19c2_Abroad__Which_trade_facilitation_mechanisms_would_make_a_significant_difference_for_the_ease_of_your.jpg"}},
+            {{q_id: "q20c1", q_text: "Domestic Customers - In what form do you regularly accept payments? Please assign the estimated percentage of your payments volume.", file_path: "results/Djibouti/q20c1_Domestic_Customers__In_what_form_do_you_regularly_accept_payments_Please_assign_the_estimated_percen.jpg"}},
+            {{q_id: "q20c2", q_text: "International Customers - In what form do you regularly accept payments? Please assign the estimated percentage of your payments volume.", file_path: "results/Djibouti/q20c2_International_Customers__In_what_form_do_you_regularly_accept_payments_Please_assign_the_estimated_p.jpg"}},
+            {{q_id: "q21c1", q_text: "Domestic - What obstacles does your online business face in using electronic payments?", file_path: "results/Djibouti/q21c1_Domestic__What_obstacles_does_your_online_business_face_in_using_electronic_payments.jpg"}},
+            {{q_id: "q21c2", q_text: "International - What obstacles does your online business face in using electronic payments?", file_path: "results/Djibouti/q21c2_International__What_obstacles_does_your_online_business_face_in_using_electronic_payments.jpg"}},
+            {{q_id: "q22c1", q_text: "Domestic - What obstacles and concerns related to online consumer protection rules does your business face with sales online?", file_path: "results/Djibouti/q22c1_Domestic__What_obstacles_and_concerns_related_to_online_consumer_protection_rules_does_your_business.jpg"}},
+            {{q_id: "q22c2", q_text: "International - What obstacles and concerns related to online consumer protection rules does your business face with sales online?", file_path: "results/Djibouti/q22c2_International__What_obstacles_and_concerns_related_to_online_consumer_protection_rules_does_your_bus.jpg"}},
+            {{q_id: "q23", q_text: "Does your business use formal electronic authentication with customers?", file_path: "results/Djibouti/q23_Does_your_business_use_formal_electronic_authentication_with_customers.jpg"}},
+            {{q_id: "q24c1", q_text: "Domestic - What obstacles does your business face in using electronic authentication?", file_path: "results/Djibouti/q24c1_Domestic__What_obstacles_does_your_business_face_in_using_electronic_authentication.jpg"}},
+            {{q_id: "q24c2", q_text: "International - What obstacles does your business face in using electronic authentication?", file_path: "results/Djibouti/q24c2_International__What_obstacles_does_your_business_face_in_using_electronic_authentication.jpg"}},
+            {{q_id: "q25", q_text: "Does your business use formal electronic signatures with customers or suppliers?", file_path: "results/Djibouti/q25_Does_your_business_use_formal_electronic_signatures_with_customers_or_suppliers.jpg"}},
+            {{q_id: "q26c1", q_text: "Domestic - What obstacles does your business face in using electronic signatures?", file_path: "results/Djibouti/q26c1_Domestic__What_obstacles_does_your_business_face_in_using_electronic_signatures.jpg"}},
+            {{q_id: "q26c2", q_text: "International - What obstacles does your business face in using electronic signatures?", file_path: "results/Djibouti/q26c2_International__What_obstacles_does_your_business_face_in_using_electronic_signatures.jpg"}},
+            {{q_id: "q27", q_text: "How adequate are the government support mechanisms to help your business increase international sales online?", file_path: "results/Djibouti/q27_How_adequate_are_the_government_support_mechanisms_to_help_your_business_increase_international_sale.jpg"}}
+        ];
+
+        const questionsContainer = document.getElementById("questions");
+
+        questions.forEach(question => {
+            const questionDiv = document.createElement("div");
+            questionDiv.innerHTML = `
+                <div class="question" onclick="toggleAnswer(this)">
+                    ${question.q_text}
+                </div>
+                <div class="answer">
+                    <img src="${question.file_path}" alt="${question.q_text}">
+                </div>
+            `;
+            questionsContainer.appendChild(questionDiv);
+        });
+
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            if (answer.style.display === "block") {
+                answer.style.display = "none";
+            } else {
+                answer.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
